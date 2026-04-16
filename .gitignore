@@ -10,4 +10,3 @@ GoogleService-Info.plist
 .DS_Store
 *.log
 coverage/
-src/**/*.js
