@@ -62,7 +62,7 @@ export class Step6Guide {
     body.innerHTML = `
       <div class="card">
         <h2>Kalibrierungsanleitung</h2>
-        <p>Folge diesen Schritten um die Montierung zu kalibrieren.</p>
+        <p>Folge diesen Schritten, um die Montierung zu kalibrieren.</p>
       </div>
       <div class="card" style="display:flex;flex-direction:column;gap:16px">
         ${stepsHtml}

@@ -6,7 +6,18 @@ function loadSaved(): Location | null {
   try {
     const raw = localStorage.getItem(LOC_KEY);
     if (!raw) return null;
-    return JSON.parse(raw) as Location;
+    const parsed = JSON.parse(raw) as unknown;
+    if (
+      typeof parsed === 'object' &&
+      parsed !== null &&
+      'lat' in parsed &&
+      'lon' in parsed &&
+      Number.isFinite((parsed as Location).lat) &&
+      Number.isFinite((parsed as Location).lon)
+    ) {
+      return parsed as Location;
+    }
+    return null;
   } catch {
     return null;
   }

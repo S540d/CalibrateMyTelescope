@@ -82,7 +82,7 @@ export class Step4Obstacles {
       ${SECTOR_LABELS.map((l) => `<div class="grid-sector-label">${l}</div>`).join('')}
     </div>`;
 
-    for (const [zi, zone] of zones.entries()) {
+    for (const zone of zones) {
       const zoneIdx = ALTITUDE_ZONES.indexOf(zone);
       html += `<div class="grid-row">
         <div class="grid-zone-label">${zone.label}</div>
@@ -92,8 +92,6 @@ export class Step4Obstacles {
             data-sector="${si}" data-zone="${zoneIdx}"></div>`;
         }).join('')}
       </div>`;
-      // suppress unused variable warning
-      void zi;
     }
 
     html += `</div>`;
@@ -206,6 +204,7 @@ export class Step4Obstacles {
         const zi = parseInt(el.dataset['zone']!);
         this.profile[si][zi] = !this.profile[si][zi];
         el.classList.toggle('blocked');
+        if (this.showMap) this.render();
       });
     });
   }

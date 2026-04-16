@@ -18,7 +18,7 @@ jobs:
         run: bash scripts/security-check.sh
 
   code-quality:
-    name: Lint & Test
+    name: Test & Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

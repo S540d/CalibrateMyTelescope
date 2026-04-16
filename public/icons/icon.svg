@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="80" fill="#0A0A0A"/>
+  <!-- Telescope tube -->
+  <rect x="160" y="200" width="220" height="60" rx="10" fill="#8B0000"/>
+  <!-- Eyepiece -->
+  <rect x="340" y="185" width="40" height="90" rx="8" fill="#CC2200"/>
+  <!-- Objective end -->
+  <rect x="140" y="210" width="30" height="40" rx="6" fill="#CC2200"/>
+  <!-- Tripod legs -->
+  <line x1="256" y1="260" x2="180" y2="380" stroke="#8B0000" stroke-width="16" stroke-linecap="round"/>
+  <line x1="256" y1="260" x2="256" y2="390" stroke="#8B0000" stroke-width="16" stroke-linecap="round"/>
+  <line x1="256" y1="260" x2="332" y2="380" stroke="#8B0000" stroke-width="16" stroke-linecap="round"/>
+  <!-- Stars -->
+  <circle cx="130" cy="140" r="8" fill="#FFB3B3"/>
+  <circle cx="370" cy="110" r="6" fill="#FFB3B3"/>
+  <circle cx="420" cy="160" r="4" fill="#FF6666"/>
+  <circle cx="100" cy="180" r="5" fill="#FF6666"/>
+</svg>

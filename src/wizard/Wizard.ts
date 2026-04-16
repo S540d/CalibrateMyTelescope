@@ -29,11 +29,6 @@ export class Wizard {
     this.render();
   }
 
-  private saveAndRender(): void {
-    saveProfile(this.state.profile);
-    this.render();
-  }
-
   private render(): void {
     this.root.innerHTML = this.buildShell();
     this.attachEvents();
@@ -52,9 +47,9 @@ export class Wizard {
 
     return `
       <div class="wiz-header">
-        <button class="wiz-back" id="btn-back" ${canGoBack ? '' : 'disabled'}>←</button>
+        <button class="wiz-back" id="btn-back" aria-label="Zurück" ${canGoBack ? '' : 'disabled'}>←</button>
         <span class="wiz-title">Schritt ${this.state.step} / ${TOTAL_STEPS}</span>
-        ${canSkip ? `<button class="wiz-skip" id="btn-skip">Überspr.</button>` : '<span style="min-width:44px"></span>'}
+        ${canSkip ? `<button class="wiz-skip" id="btn-skip" aria-label="Schritt überspringen">Überspr.</button>` : '<span style="min-width:44px"></span>'}
       </div>
       <div class="wiz-dots">${dots}</div>
       <div class="wiz-body" id="step-body"></div>
@@ -95,7 +90,7 @@ export class Wizard {
       case 4:
         new Step4Obstacles(body, footer, this.state.profile, (profile) => {
           this.state.profile = profile;
-          this.saveAndRender();
+          saveProfile(profile);
           this.next();
         });
         break;
