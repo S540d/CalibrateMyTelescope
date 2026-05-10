@@ -75,6 +75,7 @@ src/
 
 - **Issue #2** (Security-Scan): ✅ Pre-Commit-Hook + CI-Job implementiert
 - **Issue #3** (Feature Scope): ✅ Implementiert
-- **PR #4** (Horizon-Strip UX): Nicht umgesetzt — stattdessen Polar-Grid gewählt
+- **PR #1** (WIP Copilot-Init): ✅ Geschlossen — Inhalt bereits auf `main` umgesetzt
+- **PR #4** (Horizon-Strip UX): ✅ Geschlossen — Konzept nicht umgesetzt, stattdessen 8×3-Polar-Grid
 - **GoTo Phase 2**: Montierungs-Schnittstelle (offen)
 - PWA-Icons: SVG vorhanden, für Play Store TWA werden PNG-Icons (192×192, 512×512) benötigt
