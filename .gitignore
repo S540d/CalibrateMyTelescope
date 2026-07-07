@@ -19,4 +19,6 @@ coverage/
 
 # Security – Pflicht-Einträge (Issue #7 / reusable-gitignore-audit)
 credentials.json
+*.p12
+*.p8
 docs/private/
