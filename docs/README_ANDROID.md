@@ -72,6 +72,7 @@ akzeptiert nur Uploads, die mit demselben Key signiert sind wie der ursprünglic
 ```bash
 cp keystore/telescopealign-release.keystore ~/Backups/telescopealign-keystore-$(date +%F).keystore
 ```
+
 Auch `keystore/.keystore-credentials` sicher hinterlegen (Passwort-Manager) — beide Dateien sind
 gitignored und existieren nur lokal.
 
@@ -108,6 +109,7 @@ npx @bubblewrap/cli build
 ```
 
 Das erzeugt:
+
 - `app-release-signed.apk` — signierte APK (z. B. für Sideloading/Tests)
 - `app-release-bundle.aab` — signiertes App Bundle (**für Play-Store-Upload**)
 

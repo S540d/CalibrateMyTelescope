@@ -74,7 +74,7 @@ src/
 ## Android / Play Store (TWA)
 
 - **App-Name (Store):** Telescope Align — **Package Name:** `com.sven4321.telescopealign`
-- **Namens-Trennung:** Nutzersichtbarer Name = *Telescope Align* (englisches Listing, Reichweite).
+- **Namens-Trennung:** Nutzersichtbarer Name = _Telescope Align_ (englisches Listing, Reichweite).
   Repo & GitHub-Pages-URL behalten den Slug `CalibrateMyTelescope` (entwicklerseitig, nicht im Store
   sichtbar) — ein Repo-Rename würde Live-PWA + Digital Asset Links brechen und ist bewusst out of scope.
 - **Projekt:** `Android/` (Bubblewrap-generiertes Gradle/TWA-Projekt; committed, aber
