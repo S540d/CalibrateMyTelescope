@@ -10,3 +10,9 @@ GoogleService-Info.plist
 .DS_Store
 *.log
 coverage/
+
+# Claude Code – nur maschinenspezifische Artefakte ignorieren.
+# .claude/commands/ wird bewusst getrackt (Issue #31) → NICHT ignorieren.
+.claude/settings.local.json
+.claude/cache/
+.claude/memory/
