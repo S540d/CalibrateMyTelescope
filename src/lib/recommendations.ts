@@ -8,14 +8,14 @@ export interface StarResult extends Star {
 }
 
 const MAX_RESULTS = 20;
-const MIN_ALTITUDE = 10;     // degrees — avoid atmospheric distortion near horizon
-const MAX_ALTITUDE = 85;     // degrees — near-zenith causes mount tracking issues
+const MIN_ALTITUDE = 10; // degrees — avoid atmospheric distortion near horizon
+const MAX_ALTITUDE = 85; // degrees — near-zenith causes mount tracking issues
 const MAX_MAG = 3.1;
 
 export function recommendStars(
   profile: HorizonProfile,
   location: Location,
-  date: Date
+  date: Date,
 ): StarResult[] {
   const results: StarResult[] = [];
 
@@ -43,7 +43,7 @@ function spreadResults(stars: StarResult[]): StarResult[] {
   // Divide sky into 8 sectors and pick best from each
   const buckets: StarResult[][] = Array.from({ length: 8 }, () => []);
   for (const star of stars) {
-    const sector = Math.round(((star.azimuth % 360) + 360) % 360 / 45) % 8;
+    const sector = Math.round((((star.azimuth % 360) + 360) % 360) / 45) % 8;
     buckets[sector].push(star);
   }
 
@@ -67,5 +67,5 @@ function spreadResults(stars: StarResult[]): StarResult[] {
 
 export function formatAzimuth(deg: number): string {
   const dirs = ['N', 'NO', 'O', 'SO', 'S', 'SW', 'W', 'NW'];
-  return dirs[Math.round(((deg % 360) + 360) % 360 / 45) % 8];
+  return dirs[Math.round((((deg % 360) + 360) % 360) / 45) % 8];
 }

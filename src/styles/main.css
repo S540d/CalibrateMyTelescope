@@ -1,25 +1,32 @@
 :root {
-  --bg:           #0A0A0A;
-  --bg-card:      #111118;
-  --sky:          #0d1021;
-  --obstacle:     #8B0000;
-  --obstacle-hi:  #CC2200;
-  --obstacle-sel: #FF4444;
-  --free:         #1a1a2e;
-  --text:         #FF6666;
-  --text-dim:     #993333;
-  --text-bright:  #FFB3B3;
-  --border:       #3d1515;
-  --btn-bg:       #2d1b1b;
-  --btn-border:   #8B0000;
-  --btn-active:   #CC2200;
-  --accent:       #FF4444;
-  --step-done:    #3d1515;
+  --bg: #0a0a0a;
+  --bg-card: #111118;
+  --sky: #0d1021;
+  --obstacle: #8b0000;
+  --obstacle-hi: #cc2200;
+  --obstacle-sel: #ff4444;
+  --free: #1a1a2e;
+  --text: #ff6666;
+  --text-dim: #993333;
+  --text-bright: #ffb3b3;
+  --border: #3d1515;
+  --btn-bg: #2d1b1b;
+  --btn-border: #8b0000;
+  --btn-active: #cc2200;
+  --accent: #ff4444;
+  --step-done: #3d1515;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html, body {
+html,
+body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Courier New', Courier, monospace;
@@ -58,7 +65,10 @@ html, body {
   align-items: center;
 }
 
-.wiz-back:disabled { opacity: 0.2; cursor: default; }
+.wiz-back:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
 
 .wiz-title {
   font-size: 0.85rem;
@@ -96,8 +106,12 @@ html, body {
   background: var(--border);
   transition: background 0.2s;
 }
-.wiz-dot.done  { background: var(--step-done); }
-.wiz-dot.active { background: var(--accent); }
+.wiz-dot.done {
+  background: var(--step-done);
+}
+.wiz-dot.active {
+  background: var(--accent);
+}
 
 /* ── Step body ── */
 .wiz-body {
@@ -130,10 +144,14 @@ html, body {
   cursor: pointer;
   border-radius: 4px;
   min-height: 52px;
-  transition: background 0.15s, border-color 0.15s;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
 }
 
-.btn:active { background: var(--btn-active); }
+.btn:active {
+  background: var(--btn-active);
+}
 .btn-primary {
   background: var(--obstacle);
   border-color: var(--obstacle-hi);
@@ -141,9 +159,19 @@ html, body {
   width: 100%;
   font-size: 1rem;
 }
-.btn-primary:active { background: var(--btn-active); }
-.btn-sm { padding: 8px 14px; min-height: 40px; font-size: 0.85rem; }
-.btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn-primary:active {
+  background: var(--btn-active);
+}
+.btn-sm {
+  padding: 8px 14px;
+  min-height: 40px;
+  font-size: 0.85rem;
+}
+.btn-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 
 /* ── Cards / sections ── */
 .card {
@@ -153,13 +181,32 @@ html, body {
   padding: 16px;
 }
 
-h2 { font-size: 1.1rem; color: var(--text-bright); margin-bottom: 8px; }
-h3 { font-size: 0.95rem; color: var(--text-bright); margin-bottom: 6px; }
-p  { font-size: 0.85rem; line-height: 1.6; color: var(--text); }
+h2 {
+  font-size: 1.1rem;
+  color: var(--text-bright);
+  margin-bottom: 8px;
+}
+h3 {
+  font-size: 0.95rem;
+  color: var(--text-bright);
+  margin-bottom: 6px;
+}
+p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text);
+}
 
 /* ── Input / label ── */
-.field { display: flex; flex-direction: column; gap: 6px; }
-.field label { font-size: 0.8rem; color: var(--text-dim); }
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field label {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
 .field input {
   background: var(--bg);
   border: 1px solid var(--border);
@@ -170,7 +217,9 @@ p  { font-size: 0.85rem; line-height: 1.6; color: var(--text); }
   border-radius: 4px;
   min-height: 48px;
 }
-.field input:focus { outline: 1px solid var(--accent); }
+.field input:focus {
+  outline: 1px solid var(--accent);
+}
 
 /* ── Obstacle grid ── */
 .obstacle-grid {
@@ -206,7 +255,9 @@ p  { font-size: 0.85rem; line-height: 1.6; color: var(--text); }
   border-radius: 3px;
   cursor: pointer;
   min-height: 44px;
-  transition: background 0.1s, border-color 0.1s;
+  transition:
+    background 0.1s,
+    border-color 0.1s;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -231,7 +282,11 @@ p  { font-size: 0.85rem; line-height: 1.6; color: var(--text); }
 }
 
 /* ── Star list ── */
-.star-list { display: flex; flex-direction: column; gap: 8px; }
+.star-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
 .star-item {
   display: grid;
@@ -244,12 +299,34 @@ p  { font-size: 0.85rem; line-height: 1.6; color: var(--text); }
   border-radius: 4px;
 }
 
-.star-name  { font-size: 0.95rem; color: var(--text-bright); }
-.star-bayer { font-size: 0.75rem; color: var(--text-dim); }
-.star-mag   { font-size: 0.8rem; color: var(--text); text-align: right; }
-.star-pos   { font-size: 0.8rem; color: var(--text-dim); text-align: right; }
-.star-note  { grid-column: 1 / -1; font-size: 0.75rem; color: var(--text-dim); line-height: 1.4; }
-.star-coords { font-size: 0.72rem; color: #663333; }
+.star-name {
+  font-size: 0.95rem;
+  color: var(--text-bright);
+}
+.star-bayer {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+.star-mag {
+  font-size: 0.8rem;
+  color: var(--text);
+  text-align: right;
+}
+.star-pos {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-align: right;
+}
+.star-note {
+  grid-column: 1 / -1;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+.star-coords {
+  font-size: 0.72rem;
+  color: #663333;
+}
 
 /* ── Location status ── */
 .location-status {
@@ -258,8 +335,14 @@ p  { font-size: 0.85rem; line-height: 1.6; color: var(--text); }
   border-radius: 4px;
   border: 1px solid var(--border);
 }
-.location-status.ok   { border-color: #336633; color: #66aa66; }
-.location-status.err  { border-color: var(--border); color: var(--text-dim); }
+.location-status.ok {
+  border-color: #336633;
+  color: #66aa66;
+}
+.location-status.err {
+  border-color: var(--border);
+  color: var(--text-dim);
+}
 
 /* ── Polar alignment SVG wrapper ── */
 .polaris-figure {
@@ -302,9 +385,19 @@ p  { font-size: 0.85rem; line-height: 1.6; color: var(--text); }
   justify-content: center;
 }
 
-.guide-text { font-size: 0.85rem; line-height: 1.6; }
+.guide-text {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
 
 /* ── Scrollbar ── */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}

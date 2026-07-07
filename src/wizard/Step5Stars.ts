@@ -8,7 +8,7 @@ export class Step5Stars {
     footer: HTMLElement,
     profile: HorizonProfile,
     location: Location | null,
-    onNext: () => void
+    onNext: () => void,
   ) {
     const now = new Date();
     const loc = location ?? { lat: 48.0, lon: 11.0 };
@@ -20,7 +20,7 @@ export class Step5Stars {
             Überprüfe deine Hindernisse oder die Uhrzeit.</p>`
         : stars
             .map(
-              (s) => `
+              s => `
               <div class="star-item">
                 <div>
                   <div class="star-name">${s.name}</div>
@@ -35,7 +35,7 @@ export class Step5Stars {
                   <div class="star-coords">RA ${s.ra.toFixed(2)}h</div>
                   <div class="star-coords">Dec ${s.dec.toFixed(1)}°</div>
                 </div>
-              </div>`
+              </div>`,
             )
             .join('');
 
