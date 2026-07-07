@@ -16,3 +16,7 @@ coverage/
 .claude/settings.local.json
 .claude/cache/
 .claude/memory/
+
+# Security – Pflicht-Einträge (Issue #7 / reusable-gitignore-audit)
+credentials.json
+docs/private/
