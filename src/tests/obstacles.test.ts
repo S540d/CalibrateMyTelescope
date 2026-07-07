@@ -16,11 +16,11 @@ describe('emptyProfile', () => {
   });
 
   it('each sector has 3 zones', () => {
-    emptyProfile().forEach((s) => expect(s).toHaveLength(3));
+    emptyProfile().forEach(s => expect(s).toHaveLength(3));
   });
 
   it('all cells are false', () => {
-    emptyProfile().forEach((s) => s.forEach((z) => expect(z).toBe(false)));
+    emptyProfile().forEach(s => s.forEach(z => expect(z).toBe(false)));
   });
 });
 
@@ -46,9 +46,9 @@ describe('SECTOR_LABELS and ALTITUDE_ZONES', () => {
 describe('presetBalcony', () => {
   it('blocks N, NW, W at lowest zone', () => {
     const p = presetBalcony();
-    expect(p[0][0]).toBe(true);  // N
-    expect(p[7][0]).toBe(true);  // NW
-    expect(p[6][0]).toBe(true);  // W
+    expect(p[0][0]).toBe(true); // N
+    expect(p[7][0]).toBe(true); // NW
+    expect(p[6][0]).toBe(true); // W
     expect(p[3][0]).toBe(false); // SE should be free
   });
 });
@@ -56,7 +56,7 @@ describe('presetBalcony', () => {
 describe('presetGarden', () => {
   it('blocks all sectors at lowest zone', () => {
     const p = presetGarden();
-    p.forEach((sector) => {
+    p.forEach(sector => {
       expect(sector[0]).toBe(true);
       expect(sector[1]).toBe(false);
       expect(sector[2]).toBe(false);
@@ -81,7 +81,7 @@ describe('isBlocked', () => {
     const p = emptyProfile();
     p[1][0] = true; // NE=45°, 0–30°
     expect(isBlocked(p, 45, 10)).toBe(true);
-    expect(isBlocked(p, 40, 10)).toBe(true);  // rounds to sector 1
+    expect(isBlocked(p, 40, 10)).toBe(true); // rounds to sector 1
     expect(isBlocked(p, 90, 10)).toBe(false); // sector 2 (E), not blocked
   });
 
@@ -112,7 +112,7 @@ describe('loadProfile / saveProfile', () => {
     (localStorage.getItem as ReturnType<typeof vi.fn>).mockReturnValue(null);
     const p = loadProfile();
     expect(p).toHaveLength(8);
-    p.forEach((s) => s.forEach((z) => expect(z).toBe(false)));
+    p.forEach(s => s.forEach(z => expect(z).toBe(false)));
   });
 
   it('restores a saved profile', () => {
@@ -132,9 +132,6 @@ describe('loadProfile / saveProfile', () => {
   it('calls setItem on save', () => {
     const p = emptyProfile();
     saveProfile(p);
-    expect(localStorage.setItem).toHaveBeenCalledWith(
-      'cmt_horizon_profile',
-      JSON.stringify(p)
-    );
+    expect(localStorage.setItem).toHaveBeenCalledWith('cmt_horizon_profile', JSON.stringify(p));
   });
 });

@@ -4,11 +4,11 @@ on:
   push:
     branches: [main, 'claude/**']
   pull_request:
-    branches: [main]
+    branches: [main, testing]
 
 jobs:
   security-check:
-    name: Security scan
+    name: Security scan (project-specific)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
