@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - Telescope Align</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #333;
+      }
+
+      h1 {
+        color: #1f2937;
+        border-bottom: 3px solid #1f2937;
+        padding-bottom: 10px;
+      }
+
+      h2 {
+        color: #4b5563;
+        margin-top: 30px;
+      }
+
+      .last-updated {
+        color: #666;
+        font-style: italic;
+        margin-bottom: 30px;
+      }
+
+      ul {
+        margin: 10px 0;
+        padding-left: 20px;
+      }
+
+      li {
+        margin: 5px 0;
+      }
+
+      a {
+        color: #1f2937;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .contact {
+        background: #f5f5f5;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Privacy Policy</h1>
+    <p class="last-updated">Last updated: <span id="date"></span></p>
+
+    <h2>1. Data Controller</h2>
+    <div class="contact">
+      <p>The party responsible for data processing is:</p>
+      <p>
+        Sven-Uwe Strohkark<br />
+        Meisenstrasse 1, 14612 Falkensee, Germany<br />
+        Email: DevSven@posteo.de
+      </p>
+    </div>
+
+    <h2>2. Overview</h2>
+    <p>
+      Telescope Align ("the app") guides users step by step through aligning a telescope —
+      including location, polar alignment, horizon obstacles, and star recommendations. The app
+      works entirely offline and has no server backend. This privacy policy explains what data is
+      processed while you use it.
+    </p>
+
+    <h2>3. No Server, No Account, No Cloud</h2>
+    <p>
+      The app has no backend and no user accounts. No data is transmitted to us or to any third
+      party. All calculations (star positions, visibility, alignment steps) run exclusively on
+      your device.
+    </p>
+
+    <h2>4. Data Processed</h2>
+
+    <h3>4.1 Location Data</h3>
+    <p>
+      When you use GPS positioning, the app requests your location through the standard browser
+      interface (<code>Geolocation API</code>). This position is processed only locally on the
+      device to compute star altitude and visibility. It is not stored, not logged, and never
+      transmitted to a server. Alternatively, you can enter your location manually — in that case
+      no GPS request is made.
+    </p>
+
+    <h3>4.2 Locally Stored Data</h3>
+    <p>
+      Your obstacle profile (which compass directions are blocked by trees, buildings, etc.) is
+      stored exclusively in your browser's <code>localStorage</code> on your device. This data
+      never leaves your device and is accessible only to you. You can remove it at any time via
+      your browser settings or by clearing the site data.
+    </p>
+
+    <h3>4.3 Technical Data</h3>
+    <p>
+      When the app is loaded via GitHub Pages, only the usual anonymized access logs kept by
+      GitHub are generated server-side (e.g. IP address, timestamp). We have no control over this;
+      the
+      <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank"
+        >GitHub Privacy Statement</a
+      >
+      applies.
+    </p>
+
+    <h2>5. Offline Functionality (Service Worker)</h2>
+    <p>
+      The app uses a service worker to cache content for offline use (Progressive Web App). Only
+      static app files (HTML, CSS, JavaScript, the star catalog) are stored in the browser cache —
+      no personal data.
+    </p>
+
+    <h2>6. No Sharing With Third Parties</h2>
+    <p>
+      Since no data is collected or transmitted, none is shared with third parties. The app
+      contains no advertising, no tracking, and no analytics software.
+    </p>
+
+    <h2>7. Your Rights</h2>
+    <p>
+      Because no personal data is stored outside your device, most data-protection rights of access
+      or erasure are effectively moot — there is nothing on our side to delete that we never held in
+      the first place. Any locally stored data (the obstacle profile) can be deleted by you at any
+      time via your browser or app settings.
+    </p>
+
+    <h2>8. Changes to This Privacy Policy</h2>
+    <p>
+      We reserve the right to update this privacy policy to reflect changes in the law or in the
+      app. The current version is always available at this URL.
+    </p>
+
+    <h2>9. Contact</h2>
+    <div class="contact">
+      <p>If you have questions about this privacy policy, you can reach us at:</p>
+      <p>Email: DevSven@posteo.de</p>
+    </div>
+
+    <h2>10. Right to Lodge a Complaint</h2>
+    <p>
+      You have the right to lodge a complaint with a data-protection supervisory authority if you
+      believe the processing of your personal data violates the GDPR.
+    </p>
+    <p>
+      Competent supervisory authority in Germany:<br />
+      Der Bundesbeauftragte für den Datenschutz und die Informationsfreiheit (BfDI)<br />
+      Website: <a href="https://www.bfdi.bund.de" target="_blank">https://www.bfdi.bund.de</a>
+    </p>
+
+    <script>
+      const today = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('date').textContent = today.toLocaleDateString('en-US', options);
+    </script>
+  </body>
+</html>

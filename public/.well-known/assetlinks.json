@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.sven4321.telescopealign",
+      "sha256_cert_fingerprints": [
+        "FD:EF:5C:54:95:FE:73:FA:1F:B9:57:B3:EC:DA:95:63:6F:F4:4E:1C:04:D1:3C:D4:07:8B:BC:5F:6D:2B:CE:DE"
+      ]
+    }
+  }
+]
