@@ -22,3 +22,7 @@ PWA, die schrittweise durch die Teleskop-Kalibrierung führt — inklusive Stand
 - **Hindernismodell** — 8×3-Polar-Grid mit Presets (Alles frei / Balkon / Garten), persistiert lokal
 - **Sternempfehlung** — bis zu 20 Kalibrierungssterne, gefiltert nach Sichtbarkeit und über den Himmel verteilt
 - **Offline-fähig** — PWA mit Service Worker, kein Backend nötig
+
+## License
+
+See [LICENSE](LICENSE).
