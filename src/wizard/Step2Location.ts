@@ -96,16 +96,16 @@ export class Step2Location {
     status.textContent = 'Standort wird ermittelt…';
 
     navigator.geolocation.getCurrentPosition(
-      (pos) => {
+      pos => {
         const loc: Location = { lat: pos.coords.latitude, lon: pos.coords.longitude };
         this.saveLocation(loc);
         status.textContent = '';
         this.render();
       },
-      (err) => {
+      err => {
         status.textContent = `Fehler: ${err.message}`;
       },
-      { timeout: 10000 }
+      { timeout: 10000 },
     );
   }
 

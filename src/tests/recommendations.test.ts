@@ -14,12 +14,12 @@ describe('recommendStars', () => {
 
   it('returns only stars above minimum altitude', () => {
     const results = recommendStars(emptyProfile(), MUNICH, SUMMER_NIGHT);
-    results.forEach((s) => expect(s.altitude).toBeGreaterThanOrEqual(10));
+    results.forEach(s => expect(s.altitude).toBeGreaterThanOrEqual(10));
   });
 
   it('returns only stars below maximum altitude', () => {
     const results = recommendStars(emptyProfile(), MUNICH, SUMMER_NIGHT);
-    results.forEach((s) => expect(s.altitude).toBeLessThanOrEqual(85));
+    results.forEach(s => expect(s.altitude).toBeLessThanOrEqual(85));
   });
 
   it('respects obstacle profile', () => {
@@ -39,7 +39,7 @@ describe('recommendStars', () => {
 
   it('all returned stars have altitude and azimuth', () => {
     const results = recommendStars(emptyProfile(), MUNICH, SUMMER_NIGHT);
-    results.forEach((s) => {
+    results.forEach(s => {
       expect(typeof s.altitude).toBe('number');
       expect(typeof s.azimuth).toBe('number');
     });

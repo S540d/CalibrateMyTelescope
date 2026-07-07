@@ -38,8 +38,7 @@ export class Wizard {
 
   private buildShell(): string {
     const dots = Array.from({ length: TOTAL_STEPS }, (_, i) => {
-      const cls =
-        i + 1 < this.state.step ? 'done' : i + 1 === this.state.step ? 'active' : '';
+      const cls = i + 1 < this.state.step ? 'done' : i + 1 === this.state.step ? 'active' : '';
       return `<div class="wiz-dot ${cls}"></div>`;
     }).join('');
 
@@ -60,15 +59,24 @@ export class Wizard {
 
   private attachEvents(): void {
     document.getElementById('btn-back')?.addEventListener('click', () => {
-      if (this.state.step > 1) { this.state.step--; this.render(); }
+      if (this.state.step > 1) {
+        this.state.step--;
+        this.render();
+      }
     });
     document.getElementById('btn-skip')?.addEventListener('click', () => {
-      if (this.state.step < TOTAL_STEPS) { this.state.step++; this.render(); }
+      if (this.state.step < TOTAL_STEPS) {
+        this.state.step++;
+        this.render();
+      }
     });
   }
 
   private next(): void {
-    if (this.state.step < TOTAL_STEPS) { this.state.step++; this.render(); }
+    if (this.state.step < TOTAL_STEPS) {
+      this.state.step++;
+      this.render();
+    }
   }
 
   private renderStep(): void {
@@ -80,7 +88,7 @@ export class Wizard {
         new Step1Welcome(body, footer, () => this.next());
         break;
       case 2:
-        new Step2Location(body, footer, (loc) => {
+        new Step2Location(body, footer, loc => {
           this.state.location = loc;
           this.next();
         });
@@ -89,20 +97,14 @@ export class Wizard {
         new Step3PolarAlignment(body, footer, () => this.next());
         break;
       case 4:
-        new Step4Obstacles(body, footer, this.state.profile, (profile) => {
+        new Step4Obstacles(body, footer, this.state.profile, profile => {
           this.state.profile = profile;
           saveProfile(profile);
           this.next();
         });
         break;
       case 5:
-        new Step5Stars(
-          body,
-          footer,
-          this.state.profile,
-          this.state.location,
-          () => this.next()
-        );
+        new Step5Stars(body, footer, this.state.profile, this.state.location, () => this.next());
         break;
       case 6:
         new Step6Guide(body, footer);

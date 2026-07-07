@@ -18,11 +18,11 @@ export class Step4Obstacles {
     body: HTMLElement,
     footer: HTMLElement,
     initialProfile: HorizonProfile,
-    onNext: (profile: HorizonProfile) => void
+    onNext: (profile: HorizonProfile) => void,
   ) {
     this.body = body;
     this.footer = footer;
-    this.profile = initialProfile.map((s) => [...s]);
+    this.profile = initialProfile.map(s => [...s]);
     this.onNext = onNext;
     this.render();
   }
@@ -79,7 +79,7 @@ export class Step4Obstacles {
     // Header row with sector labels
     html += `<div class="grid-row">
       <div></div>
-      ${SECTOR_LABELS.map((l) => `<div class="grid-sector-label">${l}</div>`).join('')}
+      ${SECTOR_LABELS.map(l => `<div class="grid-sector-label">${l}</div>`).join('')}
     </div>`;
 
     for (const zone of zones) {
@@ -141,13 +141,13 @@ export class Step4Obstacles {
     }
 
     // Altitude rings
-    const rings = [30, 60, 90].map((alt) => {
+    const rings = [30, 60, 90].map(alt => {
       const r = maxR * (1 - alt / 90);
       return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#3d1515" stroke-width="0.8"/>`;
     });
 
     // Ring labels
-    const ringLabels = [0, 30, 60].map((alt) => {
+    const ringLabels = [0, 30, 60].map(alt => {
       const r = maxR * (1 - alt / 90) - 4;
       return `<text x="${cx + 4}" y="${cy - r}" fill="#663333" font-size="8" font-family="monospace">${alt}°</text>`;
     });
@@ -197,7 +197,7 @@ export class Step4Obstacles {
       this.onNext(this.profile);
     });
 
-    document.querySelectorAll('.grid-cell').forEach((cell) => {
+    document.querySelectorAll('.grid-cell').forEach(cell => {
       cell.addEventListener('click', () => {
         const el = cell as HTMLElement;
         const sector = el.dataset['sector'];

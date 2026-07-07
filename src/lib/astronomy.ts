@@ -1,11 +1,11 @@
 export interface AltAz {
-  altitude: number;  // degrees above horizon
-  azimuth: number;   // degrees from North, clockwise
+  altitude: number; // degrees above horizon
+  azimuth: number; // degrees from North, clockwise
 }
 
 export interface Location {
-  lat: number;  // degrees
-  lon: number;  // degrees
+  lat: number; // degrees
+  lon: number; // degrees
 }
 
 function toRad(deg: number): number {
@@ -36,10 +36,7 @@ export function julianDay(date: Date): number {
 export function greenwichMeanSiderealTime(jd: number): number {
   const T = (jd - 2451545.0) / 36525;
   let gmst =
-    280.46061837 +
-    360.98564736629 * (jd - 2451545) +
-    T * T * 0.000387933 -
-    (T * T * T) / 38710000;
+    280.46061837 + 360.98564736629 * (jd - 2451545) + T * T * 0.000387933 - (T * T * T) / 38710000;
   gmst = ((gmst % 360) + 360) % 360;
   return gmst;
 }
@@ -48,7 +45,7 @@ export function raDecToAltAz(
   raHours: number,
   decDeg: number,
   location: Location,
-  date: Date
+  date: Date,
 ): AltAz {
   const jd = julianDay(date);
   const gmst = greenwichMeanSiderealTime(jd);
