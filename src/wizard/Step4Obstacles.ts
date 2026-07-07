@@ -200,8 +200,11 @@ export class Step4Obstacles {
     document.querySelectorAll('.grid-cell').forEach((cell) => {
       cell.addEventListener('click', () => {
         const el = cell as HTMLElement;
-        const si = parseInt(el.dataset['sector']!);
-        const zi = parseInt(el.dataset['zone']!);
+        const sector = el.dataset['sector'];
+        const zone = el.dataset['zone'];
+        if (sector === undefined || zone === undefined) return;
+        const si = parseInt(sector);
+        const zi = parseInt(zone);
         this.profile[si][zi] = !this.profile[si][zi];
         el.classList.toggle('blocked');
         if (this.showMap) this.render();

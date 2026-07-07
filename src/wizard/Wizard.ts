@@ -1,5 +1,6 @@
 import { loadProfile, saveProfile, type HorizonProfile } from '../lib/obstacles';
 import { type Location } from '../lib/astronomy';
+import { requireElement } from '../lib/dom';
 import { Step1Welcome } from './Step1Welcome';
 import { Step2Location } from './Step2Location';
 import { Step3PolarAlignment } from './Step3PolarAlignment';
@@ -71,8 +72,8 @@ export class Wizard {
   }
 
   private renderStep(): void {
-    const body = document.getElementById('step-body')!;
-    const footer = document.getElementById('step-footer')!;
+    const body = requireElement('step-body');
+    const footer = requireElement('step-footer');
 
     switch (this.state.step) {
       case 1:

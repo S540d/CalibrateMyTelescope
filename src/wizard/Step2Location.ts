@@ -1,4 +1,5 @@
 import { type Location } from '../lib/astronomy';
+import { requireElement } from '../lib/dom';
 
 const LOC_KEY = 'cmt_location';
 
@@ -91,7 +92,7 @@ export class Step2Location {
   }
 
   private getGps(): void {
-    const status = document.getElementById('gps-status')!;
+    const status = requireElement('gps-status');
     status.textContent = 'Standort wird ermittelt…';
 
     navigator.geolocation.getCurrentPosition(
