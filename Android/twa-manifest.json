@@ -1,5 +1,5 @@
 {
-  "packageId": "com.sven4321.telescopealign",
+  "packageId": "om.sven4321.calibratemytelescope",
   "host": "s540d.github.io",
   "name": "Telescope Align",
   "launcherName": "Telescope Align",
@@ -21,7 +21,7 @@
     "alias": "telescopealign"
   },
   "appVersionName": "1.0.1",
-  "appVersionCode": 3,
+  "appVersionCode": 5,
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
   "webManifestUrl": "https://s540d.github.io/CalibrateMyTelescope/manifest.webmanifest",

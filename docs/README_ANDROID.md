@@ -1,6 +1,6 @@
 # Android (TWA) — Telescope Align
 
-Die App heißt im Play Store **Telescope Align** (Package `com.sven4321.telescopealign`); das
+Die App heißt im Play Store **Telescope Align** (Package `om.sven4321.calibratemytelescope`); das
 Repo und die GitHub-Pages-URL behalten aus historischen Gründen den Slug `CalibrateMyTelescope`.
 
 Es ist eine reine PWA (kein Backend). Für den Play Store wird sie über eine
@@ -43,7 +43,7 @@ Farben, Version) gepflegt werden. Änderungen dort per `bubblewrap update` ins G
 
 ## Keystore
 
-**Package Name:** `com.sven4321.telescopealign`
+**Package Name:** `om.sven4321.calibratemytelescope`
 **Keystore-Format:** PKCS12 — Keystore- und Key-Passwort müssen identisch sein (Java-Limitierung
 bei PKCS12; unterschiedliche Passwörter werden von `apksigner` beim Signieren stillschweigend
 falsch interpretiert und brechen mit `BadPaddingException` ab).
