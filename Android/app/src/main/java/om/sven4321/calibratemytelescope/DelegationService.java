@@ -1,4 +1,4 @@
-package com.sven4321.telescopealign;
+package om.sven4321.calibratemytelescope;
 
 
 

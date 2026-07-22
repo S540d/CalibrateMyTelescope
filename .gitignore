@@ -32,4 +32,5 @@ Android/local.properties
 Android/keystore/.keystore-credentials
 Android/*.apk
 Android/*.aab
+Android/*.idsig
 Android/aab-archive/
