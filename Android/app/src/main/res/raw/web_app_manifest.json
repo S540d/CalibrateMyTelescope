@@ -1,12 +1,12 @@
 {
-  "name": "CalibrateMyTelescope",
-  "short_name": "CalibrateMyTelescope",
+  "name": "Telescope Align",
+  "short_name": "Telescope Align",
   "start_url": "/CalibrateMyTelescope/",
   "display": "standalone",
   "background_color": "#0A0A0A",
   "lang": "en",
   "scope": "/CalibrateMyTelescope/",
-  "description": "Schrittweise Teleskop-Kalibrierung mit Sternempfehlung",
+  "description": "Step-by-step telescope alignment with star recommendations",
   "theme_color": "#0A0A0A",
   "orientation": "portrait",
   "icons": [
