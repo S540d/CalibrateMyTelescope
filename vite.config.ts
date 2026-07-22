@@ -7,9 +7,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'CalibrateMyTelescope',
-        short_name: 'CalibrateMyTelescope',
-        description: 'Schrittweise Teleskop-Kalibrierung mit Sternempfehlung',
+        name: 'Telescope Align',
+        short_name: 'Telescope Align',
+        description: 'Step-by-step telescope alignment with star recommendations',
         theme_color: '#0A0A0A',
         background_color: '#0A0A0A',
         display: 'standalone',
@@ -38,5 +38,14 @@ export default defineConfig({
   ],
   test: {
     environment: 'jsdom',
+    coverage: {
+      provider: 'v8',
+      thresholds: {
+        statements: 40,
+        branches: 75,
+        functions: 55,
+        lines: 40,
+      },
+    },
   },
 });

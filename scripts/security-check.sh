@@ -53,7 +53,15 @@ if echo "$ADDED" | grep -qiE '(api[_-]?key|token|secret|password)\s*[:=]\s*[A-Za
 fi
 
 # SHA1/SHA256 signing fingerprints
-if echo "$ADDED" | grep -qiE '([A-F0-9]{2}:){19,}[A-F0-9]{2}'; then
+# Exception: public/.well-known/assetlinks.json MUST contain the real cert fingerprint —
+# it's a public key fingerprint (not a secret), required for TWA Digital Asset Links verification.
+# awk splits the diff into per-file blocks (on `diff --git` headers) and drops any block whose
+# path contains assetlinks.json, so the exception can't leak into unrelated files in the same diff.
+FINGERPRINT_DIFF=$(echo "$DIFF" | awk '
+  /^diff --git/ { skip = ($0 ~ /assetlinks\.json/) }
+  !skip { print }
+')
+if echo "$FINGERPRINT_DIFF" | grep '^+' | grep -v '^+++' | grep -qiE '([A-F0-9]{2}:){19,}[A-F0-9]{2}'; then
   error "Signing fingerprint (SHA1/SHA256) found. Store as repository secret."
 fi
 

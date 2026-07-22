@@ -71,6 +71,22 @@ src/
 - **Test & Build** → `npm test && npm run build`
 - **Deploy** → GitHub Pages (`dist/`) nur auf `main`
 
+## Android / Play Store (TWA)
+
+- **App-Name (Store):** Telescope Align — **Package Name:** `com.sven4321.telescopealign`
+- **Namens-Trennung:** Nutzersichtbarer Name = _Telescope Align_ (englisches Listing, Reichweite).
+  Repo & GitHub-Pages-URL behalten den Slug `CalibrateMyTelescope` (entwicklerseitig, nicht im Store
+  sichtbar) — ein Repo-Rename würde Live-PWA + Digital Asset Links brechen und ist bewusst out of scope.
+- **Projekt:** `Android/` (Bubblewrap-generiertes Gradle/TWA-Projekt; committed, aber
+  Keystore, `local.properties`, Build-Outputs sind gitignored)
+- **Kompletter Build-, Signing- und Upload-Workflow:** [docs/README_ANDROID.md](docs/README_ANDROID.md)
+- **Play-Store-Listing (Englisch):** `docs/private/PLAY_STORE_METADATA.md` (lokal, nicht in Git)
+- **Datenschutzerklärung (Englisch):** [public/privacy-policy.html](public/privacy-policy.html) —
+  live unter https://s540d.github.io/CalibrateMyTelescope/privacy-policy.html
+- **Digital Asset Links:** [public/.well-known/assetlinks.json](public/.well-known/assetlinks.json)
+- Lokal verifiziert: `bubblewrap build` erzeugt signierte APK + AAB ohne manuelle Passwort-Eingabe
+  (via `BUBBLEWRAP_KEYSTORE_PASSWORD`/`BUBBLEWRAP_KEY_PASSWORD` env vars)
+
 ## Offene Issues
 
 - **Issue #2** (Security-Scan): ✅ Pre-Commit-Hook + CI-Job implementiert
@@ -78,7 +94,7 @@ src/
 - **PR #1** (WIP Copilot-Init): ✅ Geschlossen — Inhalt bereits auf `main` umgesetzt
 - **PR #4** (Horizon-Strip UX): ✅ Geschlossen — Konzept nicht umgesetzt, stattdessen 8×3-Polar-Grid
 - **GoTo Phase 2**: Montierungs-Schnittstelle (offen)
-- PWA-Icons: SVG vorhanden, für Play Store TWA werden PNG-Icons (192×192, 512×512) benötigt
+- ✅ PWA-Icons: SVG + PNG (192×192, 512×512) vorhanden, TWA lokal gebaut und verifiziert
 
 <!-- GLOBAL POLICY:START -->
 

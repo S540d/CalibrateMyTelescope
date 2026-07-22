@@ -22,3 +22,14 @@ credentials.json
 *.p12
 *.p8
 docs/private/
+
+# Android / TWA (Bubblewrap) – lokale Build-Artefakte & Secrets
+Android/.gradle/
+Android/.idea/
+Android/build/
+Android/app/build/
+Android/local.properties
+Android/keystore/.keystore-credentials
+Android/*.apk
+Android/*.aab
+Android/aab-archive/

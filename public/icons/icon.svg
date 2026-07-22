@@ -1,18 +1,81 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Dark background -->
   <rect width="512" height="512" rx="80" fill="#0A0A0A"/>
-  <!-- Telescope tube -->
-  <rect x="160" y="200" width="220" height="60" rx="10" fill="#8B0000"/>
-  <!-- Eyepiece -->
-  <rect x="340" y="185" width="40" height="90" rx="8" fill="#CC2200"/>
-  <!-- Objective end -->
-  <rect x="140" y="210" width="30" height="40" rx="6" fill="#CC2200"/>
-  <!-- Tripod legs -->
-  <line x1="256" y1="260" x2="180" y2="380" stroke="#8B0000" stroke-width="16" stroke-linecap="round"/>
-  <line x1="256" y1="260" x2="256" y2="390" stroke="#8B0000" stroke-width="16" stroke-linecap="round"/>
-  <line x1="256" y1="260" x2="332" y2="380" stroke="#8B0000" stroke-width="16" stroke-linecap="round"/>
-  <!-- Stars -->
-  <circle cx="130" cy="140" r="8" fill="#FFB3B3"/>
-  <circle cx="370" cy="110" r="6" fill="#FFB3B3"/>
-  <circle cx="420" cy="160" r="4" fill="#FF6666"/>
-  <circle cx="100" cy="180" r="5" fill="#FF6666"/>
+
+  <!-- Night sky gradient effect (stars scattered) -->
+  <g fill="#FFD700" opacity="0.8">
+    <circle cx="60" cy="80" r="3"/>
+    <circle cx="150" cy="50" r="2"/>
+    <circle cx="420" cy="90" r="2.5"/>
+    <circle cx="450" cy="140" r="1.5"/>
+    <circle cx="480" cy="200" r="2"/>
+  </g>
+
+  <!-- Telescope tube (main body) -->
+  <g>
+    <!-- Outer tube -->
+    <ellipse cx="256" cy="200" rx="90" ry="35" fill="#CC2200" opacity="0.95"/>
+    <!-- Tube highlight -->
+    <ellipse cx="256" cy="185" rx="90" ry="12" fill="#FF5533" opacity="0.6"/>
+    <!-- Tube shadow -->
+    <ellipse cx="256" cy="215" rx="90" ry="12" fill="#8B0000" opacity="0.5"/>
+  </g>
+
+  <!-- Objective lens (left end) -->
+  <g>
+    <circle cx="160" cy="200" r="38" fill="#1a1a1a"/>
+    <circle cx="160" cy="200" r="32" fill="#2d5a6d"/>
+    <circle cx="160" cy="200" r="28" fill="#1a3a4d" opacity="0.8"/>
+    <!-- Lens shine -->
+    <ellipse cx="150" cy="190" rx="10" ry="8" fill="#4a8aad" opacity="0.5"/>
+  </g>
+
+  <!-- Eyepiece (right end) -->
+  <g>
+    <rect x="340" y="175" width="45" height="50" rx="6" fill="#CC2200"/>
+    <rect x="342" y="177" width="41" height="46" rx="4" fill="#FF5533" opacity="0.7"/>
+    <circle cx="362.5" cy="202" r="16" fill="#1a1a1a"/>
+    <circle cx="362.5" cy="202" r="12" fill="#2d5a6d"/>
+    <!-- Eyepiece shine -->
+    <circle cx="357" cy="197" r="4" fill="#4a8aad" opacity="0.6"/>
+  </g>
+
+  <!-- Diagonal mirror housing -->
+  <g>
+    <circle cx="310" cy="180" r="20" fill="#CC2200" opacity="0.8"/>
+    <circle cx="310" cy="180" r="16" fill="#8B0000"/>
+    <path d="M 305 175 L 310 180 L 305 185" fill="#2d5a6d" opacity="0.6"/>
+  </g>
+
+  <!-- Finder scope (small telescope on top) -->
+  <g>
+    <rect x="220" y="130" width="72" height="20" rx="4" fill="#8B0000"/>
+    <circle cx="232" cy="140" r="12" fill="#1a1a1a"/>
+    <circle cx="232" cy="140" r="8" fill="#2d5a6d" opacity="0.7"/>
+    <circle cx="280" cy="140" r="9" fill="#1a1a1a"/>
+    <circle cx="280" cy="140" r="5" fill="#2d5a6d" opacity="0.7"/>
+  </g>
+
+  <!-- Tripod/Mount -->
+  <g stroke="#CC2200" stroke-width="14" stroke-linecap="round" fill="none">
+    <!-- Center shaft -->
+    <line x1="256" y1="240" x2="256" y2="350"/>
+    <!-- Left leg -->
+    <path d="M 256 280 Q 180 300 150 380"/>
+    <!-- Right leg -->
+    <path d="M 256 280 Q 332 300 362 380"/>
+  </g>
+
+  <!-- Tripod feet -->
+  <g fill="#CC2200" opacity="0.8">
+    <circle cx="150" cy="385" r="8"/>
+    <circle cx="256" cy="355" r="8"/>
+    <circle cx="362" cy="385" r="8"/>
+  </g>
+
+  <!-- Calibration crosshair (represents calibration purpose) -->
+  <g stroke="#FFB3B3" stroke-width="3" stroke-linecap="round" opacity="0.6">
+    <line x1="256" y1="330" x2="256" y2="360"/>
+    <line x1="226" y1="345" x2="286" y2="345"/>
+  </g>
 </svg>

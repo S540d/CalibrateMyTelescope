@@ -1,0 +1,18 @@
+name: Security Scan (project-templates)
+
+# Caller-Template (Issue #69, Ebene A – verbindlich in ALLEN Repos).
+# Ergänzt das bestehende projektspezifische scripts/security-check.sh
+# um den zentral synchronisierten Baseline-Scan.
+# Nur gegen main getriggert (scripts/security-check.sh deckt main+testing in ci.yml bereits ab).
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  security-scan:
+    uses: S540d/project-templates/.github/workflows/reusable-security-scan.yml@v1
