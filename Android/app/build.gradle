@@ -21,7 +21,7 @@ plugins {
 }
 
 def twaManifest = [
-    applicationId: 'com.sven4321.telescopealign',
+    applicationId: 'om.sven4321.calibratemytelescope',
     hostName: 's540d.github.io', // The domain being opened in the TWA.
     launchUrl: '/CalibrateMyTelescope/', // The start path for the TWA. Must be relative to the domain.
     name: 'Telescope Align', // The application name.
@@ -52,12 +52,12 @@ def twaManifest = [
 
 android {
     compileSdkVersion 36
-    namespace "com.sven4321.telescopealign"
+    namespace "om.sven4321.calibratemytelescope"
     defaultConfig {
-        applicationId "com.sven4321.telescopealign"
+        applicationId "om.sven4321.calibratemytelescope"
         minSdkVersion 21
         targetSdkVersion 35
-        versionCode 3
+        versionCode 5
         versionName "1.0.1"
 
         // The name for the application
