@@ -20,7 +20,7 @@
     "@types/node": "^26.1.2",
     "@typescript-eslint/eslint-plugin": "^8.65.0",
     "@typescript-eslint/parser": "^8.63.0",
-    "@vitest/coverage-v8": "^1.6.1",
+    "@vitest/coverage-v8": "^4.1.10",
     "eslint": "^10.8.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.8.0",
@@ -30,7 +30,7 @@
     "typescript": "^5.4.0",
     "vite": "^5.2.0",
     "vite-plugin-pwa": "^0.20.0",
-    "vitest": "^1.6.0",
+    "vitest": "^4.1.10",
     "workbox-window": "^7.1.0"
   },
   "engines": {
