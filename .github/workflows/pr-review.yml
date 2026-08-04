@@ -11,6 +11,13 @@ name: PR Review (Claude) — optional, on-demand
 #
 # Voraussetzung: Secret ANTHROPIC_API_KEY (Repo oder Org) + Label "ai-review".
 
+# GitHub bietet keinen Label-Filter auf `on:`-Ebene, deshalb lässt sich der
+# "skipped"-Run pro Label-Event nicht vollständig vermeiden (#48). Der
+# Job-Level-`if` unten hält die Kosten aber bei ~0: der Run startet, wertet die
+# Bedingung aus und endet ohne Runner-Zeit zu verbrauchen. Bewusst
+# `pull_request` (nicht `pull_request_target`) — dieser Workflow sieht
+# PR-Code, und `pull_request_target` würde ihn mit Schreibrechten im
+# Basis-Branch-Kontext ausführen.
 on:
   pull_request:
     types: [labeled]
@@ -21,7 +28,9 @@ permissions:
 
 jobs:
   pr-review:
-    if: github.event.label.name == 'ai-review'
+    if: >-
+      github.event.label.name == 'ai-review' &&
+      github.actor != 'dependabot[bot]'
     uses: S540d/project-templates/.github/workflows/reusable-pr-review.yml@v2
     secrets:
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
