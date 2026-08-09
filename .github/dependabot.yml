@@ -5,23 +5,38 @@ updates:
     directory: '/'
     target-branch: 'testing'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
     open-pull-requests-limit: 5
     commit-message:
       prefix: 'ci'
+    # Alle Action-Bumps in EINEN PR bündeln (#48): vorher ergab jeder Bump
+    # einen eigenen PR und damit einen eigenen Satz Workflow-Runs.
+    groups:
+      github-actions:
+        patterns:
+          - '*'
 
   # NPM-Abhängigkeiten.
   - package-ecosystem: 'npm'
     directory: '/'
     target-branch: 'testing'
+    # Monatlich statt wöchentlich (#48) — bei einem Nebenprojekt reicht das
+    # und viertelt die Zahl der Dependabot-Läufe.
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
     open-pull-requests-limit: 5
     commit-message:
       prefix: 'chore'
-    # Patch-/Minor-Updates gebündelt, damit nicht pro Paket ein PR aufgeht.
     groups:
+      # Patch-/Minor-Updates gebündelt, damit nicht pro Paket ein PR aufgeht.
       minor-and-patch:
         update-types:
           - 'minor'
           - 'patch'
+      # Major-Updates ebenfalls gebündelt (#48): vorher öffnete jedes Major
+      # einen eigenen PR (vite, jsdom, @types/node, @vitest/coverage-v8 → 4 PRs
+      # à 7 Workflows). Ein gemeinsamer PR macht daraus einen bewussten,
+      # zusammenhängend zu prüfenden Breaking-Change-PR.
+      major:
+        update-types:
+          - 'major'

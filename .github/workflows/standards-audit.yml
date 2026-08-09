@@ -11,7 +11,7 @@ name: Standards Audit
 
 on:
   pull_request:
-    branches: [main, testing]
+    branches: [main]
   repository_dispatch:
     types: [weekly-self-audit]
   workflow_dispatch: {}
@@ -34,5 +34,11 @@ jobs:
   # (läuft auch bei Abweichungen grün durch). Ein job-level continue-on-error ist
   # auf uses:-Jobs nicht erlaubt – die Non-Blocking-Semantik muss daher im Template
   # bleiben; security-scan und gitignore-audit (fail_on_*: true) gaten den Merge.
+  #
+  # Bei Dependabot-PRs übersprungen (#48): der Audit prüft Projektkonventionen
+  # (Struktur, Doku, Standards) — ein reiner Lockfile-/Versions-Bump kann daran
+  # nichts ändern, der Run wäre reine Laufzeitverschwendung. Die beiden
+  # blockierenden Gates oben laufen weiterhin auch für Dependabot.
   dev-standards-audit:
+    if: github.actor != 'dependabot[bot]'
     uses: S540d/project-templates/.github/workflows/reusable-dev-standards-audit.yml@v2
