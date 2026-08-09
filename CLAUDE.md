@@ -95,6 +95,8 @@ src/
 - **PR #4** (Horizon-Strip UX): ✅ Geschlossen — Konzept nicht umgesetzt, stattdessen 8×3-Polar-Grid
 - **GoTo Phase 2**: Montierungs-Schnittstelle (offen)
 - ✅ PWA-Icons: SVG + PNG (192×192, 512×512) vorhanden, TWA lokal gebaut und verifiziert
+- **Issue #32** (offene Dependabot-CI-Bumps #27/#28/#29): ✅ Geschlossen — alle drei PRs bereits regulär in `main` gemergt
+- **Issue #48** (Dependabot-PR-Flut, testing≠main): ✅ Geschlossen — Dependabot-Intervall auf `monthly`, Major-Updates gruppiert, Dependabot-Actor überspringt pr-review/standards-audit, CI-Trigger nur noch bei PRs gegen `main`; via PR #51 (`testing` → `main`) ausgerollt
 
 <!-- GLOBAL POLICY:START -->
 
