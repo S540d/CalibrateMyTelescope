@@ -70,6 +70,7 @@ src/
   Prüft: API-Keys, Signing-Fingerabdrücke, persönliche Package-Namen, interne Docs
 - **Test & Build** → `npm test && npm run build`
 - **Deploy** → GitHub Pages (`dist/`) nur auf `main`
+- **`ci.yml`-Trigger bewusst nur `pull_request: branches: [main]`** — PRs gegen `testing` (z.B. Dependabot-PRs) durchlaufen daher kein automatisches Test&Build, nur den `mergeability`-Check. Bestätigt (2026-08-11): so gewollt, nicht ändern.
 
 ## Android / Play Store (TWA)
 
