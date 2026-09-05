@@ -70,6 +70,7 @@ src/
   Prüft: API-Keys, Signing-Fingerabdrücke, persönliche Package-Namen, interne Docs
 - **Test & Build** → `npm test && npm run build`
 - **Deploy** → GitHub Pages (`dist/`) nur auf `main`
+- **`ci.yml`-Trigger bewusst nur `pull_request: branches: [main]`** — PRs gegen `testing` (z.B. Dependabot-PRs) durchlaufen daher kein automatisches Test&Build, nur den `mergeability`-Check. Bestätigt (2026-08-11): so gewollt, nicht ändern.
 
 ## Android / Play Store (TWA)
 
@@ -89,12 +90,15 @@ src/
 
 ## Offene Issues
 
+- **Issue #59** ([Blockiert] TypeScript-7-Upgrade zurückgerollt): Dependabot-PR #55 hatte `typescript` auf `^7.0.2` gehoben, was `npm ci` bricht – `@typescript-eslint/eslint-plugin` unterstützt TS 7 in keiner veröffentlichten Version (Peer-Range überall `>=4.8.4 <6.1.0`). Zurückgerollt auf `^5.4.0`. Erst erneut versuchen, wenn `typescript-eslint` TS 7 offiziell unterstützt.
 - **Issue #2** (Security-Scan): ✅ Pre-Commit-Hook + CI-Job implementiert
 - **Issue #3** (Feature Scope): ✅ Implementiert
 - **PR #1** (WIP Copilot-Init): ✅ Geschlossen — Inhalt bereits auf `main` umgesetzt
 - **PR #4** (Horizon-Strip UX): ✅ Geschlossen — Konzept nicht umgesetzt, stattdessen 8×3-Polar-Grid
 - **GoTo Phase 2**: Montierungs-Schnittstelle (offen)
 - ✅ PWA-Icons: SVG + PNG (192×192, 512×512) vorhanden, TWA lokal gebaut und verifiziert
+- **Issue #32** (offene Dependabot-CI-Bumps #27/#28/#29): ✅ Geschlossen — alle drei PRs bereits regulär in `main` gemergt
+- **Issue #48** (Dependabot-PR-Flut, testing≠main): ✅ Geschlossen — Dependabot-Intervall auf `monthly`, Major-Updates gruppiert, Dependabot-Actor überspringt pr-review/standards-audit, CI-Trigger nur noch bei PRs gegen `main`; via PR #51 (`testing` → `main`) ausgerollt
 
 <!-- GLOBAL POLICY:START -->
 
