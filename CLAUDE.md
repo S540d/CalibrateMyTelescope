@@ -90,6 +90,7 @@ src/
 
 ## Offene Issues
 
+- **Issue #59** ([Blockiert] TypeScript-7-Upgrade zurückgerollt): Dependabot-PR #55 hatte `typescript` auf `^7.0.2` gehoben, was `npm ci` bricht – `@typescript-eslint/eslint-plugin` unterstützt TS 7 in keiner veröffentlichten Version (Peer-Range überall `>=4.8.4 <6.1.0`). Zurückgerollt auf `^5.4.0`. Erst erneut versuchen, wenn `typescript-eslint` TS 7 offiziell unterstützt.
 - **Issue #2** (Security-Scan): ✅ Pre-Commit-Hook + CI-Job implementiert
 - **Issue #3** (Feature Scope): ✅ Implementiert
 - **PR #1** (WIP Copilot-Init): ✅ Geschlossen — Inhalt bereits auf `main` umgesetzt
