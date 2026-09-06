@@ -1,3 +1,5 @@
+import { renderNextButton } from '../lib/dom';
+
 const POLARIS_SVG = `
 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:220px">
   <!-- Sucher-Okular Rahmen -->
@@ -102,7 +104,6 @@ export class Step3PolarAlignment {
       </div>
     `;
 
-    footer.innerHTML = `<button class="btn btn-primary" id="btn-next">Weiter →</button>`;
-    document.getElementById('btn-next')?.addEventListener('click', onNext);
+    renderNextButton(footer, 'Weiter →', onNext);
   }
 }
