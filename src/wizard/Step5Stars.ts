@@ -1,6 +1,7 @@
 import { type HorizonProfile } from '../lib/obstacles';
 import { type Location } from '../lib/astronomy';
 import { recommendStars, formatAzimuth } from '../lib/recommendations';
+import { renderNextButton } from '../lib/dom';
 
 export class Step5Stars {
   constructor(
@@ -50,7 +51,6 @@ export class Step5Stars {
       <div class="star-list">${listHtml}</div>
     `;
 
-    footer.innerHTML = `<button class="btn btn-primary" id="btn-next">Zur Anleitung →</button>`;
-    document.getElementById('btn-next')?.addEventListener('click', onNext);
+    renderNextButton(footer, 'Zur Anleitung →', onNext);
   }
 }
