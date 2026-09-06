@@ -99,6 +99,7 @@ src/
 - ✅ PWA-Icons: SVG + PNG (192×192, 512×512) vorhanden, TWA lokal gebaut und verifiziert
 - **Issue #32** (offene Dependabot-CI-Bumps #27/#28/#29): ✅ Geschlossen — alle drei PRs bereits regulär in `main` gemergt
 - **Issue #48** (Dependabot-PR-Flut, testing≠main): ✅ Geschlossen — Dependabot-Intervall auf `monthly`, Major-Updates gruppiert, Dependabot-Actor überspringt pr-review/standards-audit, CI-Trigger nur noch bei PRs gegen `main`; via PR #51 (`testing` → `main`) ausgerollt
+- **Issue #62** (Code-Health-Audit 2026-09-06, Wizard-Boilerplate & fehlende Tests): ✅ Geschlossen — `renderNextButton()`-Helper in `lib/dom.ts` extrahiert (alle 6 Wizard-Steps nutzen jetzt `footer.querySelector` statt globalem `document.getElementById`), `buildPolarMap()` nach `lib/polarMap.ts` extrahiert, DOM-Smoke-Tests für alle Wizard-Steps ergänzt (40 → 66 Tests), Coverage-Schwellen ehrlich auf ~88 % angehoben, hartkodiertes Grün/Weiß durch rote Nachtsicht-Palette ersetzt; via PR #63 ausgerollt
 
 <!-- GLOBAL POLICY:START -->
 
