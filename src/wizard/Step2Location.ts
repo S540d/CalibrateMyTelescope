@@ -1,5 +1,5 @@
 import { type Location } from '../lib/astronomy';
-import { requireElement } from '../lib/dom';
+import { renderNextButton } from '../lib/dom';
 
 const LOC_KEY = 'cmt_location';
 
@@ -78,21 +78,22 @@ export class Step2Location {
       </div>
     `;
 
-    this.footer.innerHTML = `
-      <button class="btn btn-primary" id="btn-next" ${saved ? '' : 'disabled'}>
-        Weiter →
-      </button>
-    `;
+    renderNextButton(
+      this.footer,
+      'Weiter →',
+      () => {
+        if (this.current) this.onNext(this.current);
+      },
+      { disabled: !saved },
+    );
 
-    document.getElementById('btn-gps')?.addEventListener('click', () => this.getGps());
-    document.getElementById('btn-manual')?.addEventListener('click', () => this.saveManual());
-    document.getElementById('btn-next')?.addEventListener('click', () => {
-      if (this.current) this.onNext(this.current);
-    });
+    this.body.querySelector('#btn-gps')?.addEventListener('click', () => this.getGps());
+    this.body.querySelector('#btn-manual')?.addEventListener('click', () => this.saveManual());
   }
 
   private getGps(): void {
-    const status = requireElement('gps-status');
+    const status = this.body.querySelector<HTMLElement>('#gps-status');
+    if (!status) return;
     status.textContent = 'Standort wird ermittelt…';
 
     navigator.geolocation.getCurrentPosition(
@@ -110,8 +111,8 @@ export class Step2Location {
   }
 
   private saveManual(): void {
-    const lat = parseFloat((document.getElementById('inp-lat') as HTMLInputElement).value);
-    const lon = parseFloat((document.getElementById('inp-lon') as HTMLInputElement).value);
+    const lat = parseFloat((this.body.querySelector('#inp-lat') as HTMLInputElement).value);
+    const lon = parseFloat((this.body.querySelector('#inp-lon') as HTMLInputElement).value);
     if (isNaN(lat) || isNaN(lon) || lat < -90 || lat > 90 || lon < -180 || lon > 180) {
       alert('Ungültige Koordinaten');
       return;

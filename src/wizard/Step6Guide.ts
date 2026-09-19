@@ -1,3 +1,5 @@
+import { renderNextButton } from '../lib/dom';
+
 const STEPS = [
   {
     title: 'Polausrichtung prüfen',
@@ -87,12 +89,13 @@ export class Step6Guide {
       </div>
     `;
 
-    footer.innerHTML = `
-      <button class="btn btn-primary" id="btn-restart">Von vorne beginnen</button>
-    `;
-
-    document.getElementById('btn-restart')?.addEventListener('click', () => {
-      window.location.reload();
-    });
+    renderNextButton(
+      footer,
+      'Von vorne beginnen',
+      () => {
+        window.location.reload();
+      },
+      { id: 'btn-restart' },
+    );
   }
 }

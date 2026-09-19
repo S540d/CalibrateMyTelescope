@@ -1,3 +1,5 @@
+import { renderNextButton } from '../lib/dom';
+
 export class Step1Welcome {
   constructor(body: HTMLElement, footer: HTMLElement, onNext: () => void) {
     body.innerHTML = `
@@ -28,7 +30,6 @@ export class Step1Welcome {
       </div>
     `;
 
-    footer.innerHTML = `<button class="btn btn-primary" id="btn-start">Los geht's →</button>`;
-    document.getElementById('btn-start')?.addEventListener('click', onNext);
+    renderNextButton(footer, "Los geht's →", onNext, { id: 'btn-start' });
   }
 }

@@ -1,6 +1,7 @@
 import { loadProfile, saveProfile, type HorizonProfile } from '../lib/obstacles';
 import { type Location } from '../lib/astronomy';
 import { requireElement } from '../lib/dom';
+import { AboutModal } from './AboutModal';
 import { Step1Welcome } from './Step1Welcome';
 import { Step2Location } from './Step2Location';
 import { Step3PolarAlignment } from './Step3PolarAlignment';
@@ -28,6 +29,12 @@ export class Wizard {
       profile: loadProfile(),
     };
     this.render();
+
+    // Bound once for the lifetime of the app (not per render), so the
+    // dropdown closes on any outside click regardless of which step is shown.
+    document.addEventListener('click', () => {
+      document.getElementById('menu-dropdown')?.classList.add('hidden');
+    });
   }
 
   private render(): void {
@@ -49,7 +56,15 @@ export class Wizard {
       <div class="wiz-header">
         <button class="wiz-back" id="btn-back" aria-label="Zurück" ${canGoBack ? '' : 'disabled'}>←</button>
         <span class="wiz-title">Schritt ${this.state.step} / ${TOTAL_STEPS}</span>
-        ${canSkip ? `<button class="wiz-skip" id="btn-skip" aria-label="Schritt überspringen">Überspr.</button>` : '<span style="min-width:44px"></span>'}
+        <div class="wiz-header-right">
+          ${canSkip ? `<button class="wiz-skip" id="btn-skip" aria-label="Schritt überspringen">Überspr.</button>` : ''}
+          <div class="wiz-menu-wrap">
+            <button class="wiz-menu-btn" id="btn-menu" aria-label="Menü" aria-haspopup="true" aria-expanded="false">⋮</button>
+            <div class="wiz-menu-dropdown hidden" id="menu-dropdown" role="menu">
+              <button class="wiz-menu-item" id="menu-about" role="menuitem">Über</button>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="wiz-dots">${dots}</div>
       <div class="wiz-body" id="step-body"></div>
@@ -69,6 +84,18 @@ export class Wizard {
         this.state.step++;
         this.render();
       }
+    });
+
+    const menuBtn = document.getElementById('btn-menu');
+    const dropdown = document.getElementById('menu-dropdown');
+    menuBtn?.addEventListener('click', e => {
+      e.stopPropagation();
+      const isHidden = dropdown?.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', isHidden ? 'false' : 'true');
+    });
+    document.getElementById('menu-about')?.addEventListener('click', () => {
+      dropdown?.classList.add('hidden');
+      new AboutModal();
     });
   }
 
