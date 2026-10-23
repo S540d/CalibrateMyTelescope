@@ -27,6 +27,10 @@ updates:
     open-pull-requests-limit: 5
     commit-message:
       prefix: 'chore'
+    # TypeScript 7 bricht `npm ci` (typescript-eslint unterstützt es nicht, #59).
+    ignore:
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major']
     groups:
       # Patch-/Minor-Updates gebündelt, damit nicht pro Paket ein PR aufgeht.
       minor-and-patch:
