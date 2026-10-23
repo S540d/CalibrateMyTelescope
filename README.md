@@ -1,40 +1,23 @@
 # Telescope Align
 
-> Play-Store-Name: **Telescope Align** · Repo/URL-Slug: `CalibrateMyTelescope` (historisch)
+Schritt für Schritt zur Teleskop-Ausrichtung: Die App führt dich durch Standort, Polausrichtung und Sternauswahl für die Kalibrierung.
 
-PWA, die schrittweise durch die Teleskop-Ausrichtung führt — inklusive Standort, Polausrichtung, Horizont-Hindernissen und Sternempfehlung.
+## App öffnen
 
-## Live
+[s540d.github.io/CalibrateMyTelescope](https://s540d.github.io/CalibrateMyTelescope) — auch im Play Store als „Telescope Align“.
 
-[https://s540d.github.io/CalibrateMyTelescope](https://s540d.github.io/CalibrateMyTelescope)
+## Was die App kann
 
-## Tech Stack
-
-| Technology      | Version |
-| --------------- | ------- |
-| Vite            | ^5.2    |
-| TypeScript      | ^5.4    |
-| vite-plugin-pwa | ^0.20   |
-| Vitest          | ^1.6    |
-
-## Features
-
-- **6-Schritte-Wizard** — Standort, Polausrichtung, Hindernisse, Sternempfehlung, Kalibrierungsanleitung
-- **GPS oder manuelle Standorteingabe**
-- **Hindernismodell** — 8×3-Polar-Grid mit Presets (Alles frei / Balkon / Garten), persistiert lokal
-- **Sternempfehlung** — bis zu 20 Kalibrierungssterne, gefiltert nach Sichtbarkeit und über den Himmel verteilt
-- **Offline-fähig** — PWA mit Service Worker, kein Backend nötig
-
-## Android
-
-Als Trusted Web Activity (TWA) für den Play Store verfügbar. Build-Anleitung:
-[docs/README_ANDROID.md](docs/README_ANDROID.md).
+- **Geführter Ablauf in 6 Schritten:** Standort, Polausrichtung, Hindernisse, Sternempfehlung, Kalibrierungsanleitung.
+- **Standort** per GPS oder manuell eingeben.
+- **Hindernisse eintragen:** markiere, in welchen Himmelsrichtungen und Höhen dir Bäume, Häuser oder Balkon die Sicht nehmen (Vorlagen: Alles frei / Balkon / Garten).
+- **Sternempfehlung:** bis zu 20 helle Kalibrierungssterne, die gerade sichtbar und über den Himmel verteilt sind.
+- Rote Nachtsicht-Darstellung, funktioniert offline.
 
 ## Datenschutz
 
-[Datenschutzerklärung](https://s540d.github.io/CalibrateMyTelescope/privacy-policy.html) —
-die App erhebt keine Daten, es gibt kein Backend und kein Tracking.
+Die App erhebt keine Daten und hat kein Tracking — [Datenschutzerklärung](https://s540d.github.io/CalibrateMyTelescope/privacy-policy.html).
 
-## License
+## Lizenz
 
-See [LICENSE](LICENSE).
+Siehe [LICENSE](LICENSE).
