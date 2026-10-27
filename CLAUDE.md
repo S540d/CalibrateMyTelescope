@@ -84,7 +84,8 @@ src/
 - **Play-Store-Listing (Englisch):** `docs/private/PLAY_STORE_METADATA.md` (lokal, nicht in Git)
 - **Datenschutzerklärung (Englisch):** [public/privacy-policy.html](public/privacy-policy.html) —
   live unter https://s540d.github.io/CalibrateMyTelescope/privacy-policy.html
-- **Digital Asset Links:** [public/.well-known/assetlinks.json](public/.well-known/assetlinks.json)
+- **Digital Asset Links:** nur am Host-Root wirksam → `.well-known/assetlinks.json` im Repo
+  `S540d/S540d.github.io` (Play-App-Signing-Key, nicht Upload-Key; Issue #76)
 - Lokal verifiziert: `bubblewrap build` erzeugt signierte APK + AAB ohne manuelle Passwort-Eingabe
   (via `BUBBLEWRAP_KEYSTORE_PASSWORD`/`BUBBLEWRAP_KEY_PASSWORD` env vars)
 

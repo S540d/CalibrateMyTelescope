@@ -78,20 +78,19 @@ gitignored und existieren nur lokal.
 
 ## SHA-256-Fingerprint (Digital Asset Links)
 
-Nach jedem Keystore-Wechsel den Fingerprint neu auslesen und in
-[public/.well-known/assetlinks.json](../public/.well-known/assetlinks.json) eintragen:
+Android prüft App Links (`autoVerify`) **nur am Host-Root**:
+`https://s540d.github.io/.well-known/assetlinks.json`. Diese Datei liegt im Repo
+[`S540d/S540d.github.io`](https://github.com/S540d/S540d.github.io/blob/main/.well-known/assetlinks.json)
+und enthält die Einträge aller TWA-Apps — eine Datei unter `/CalibrateMyTelescope/.well-known/`
+wird ignoriert (Issue #76).
 
-```bash
-"$JAVA_HOME/bin/keytool" -list -v \
-  -keystore keystore/telescopealign-release.keystore \
-  -storepass "$KEYSTORE_PASSWORD" \
-  -alias telescopealign | grep "SHA256:"
-```
+Eingetragen wird der SHA-256 des **Google-Play-App-Signing-Keys**, nicht des lokalen Upload-Keys:
+Play Console → Telescope Align → _Test und Veröffentlichung → App-Integrität → Play App Signing_
+→ _App-Signaturschlüssel-Zertifikat_. Die Deeplinks-Seite der Play Console bietet außerdem ein
+fertiges `assetlinks.json`-Snippet an.
 
-`assetlinks.json` muss unter `https://s540d.github.io/CalibrateMyTelescope/.well-known/assetlinks.json`
-live sein (wird durch den normalen `main`-Deploy von GitHub Pages mit ausgeliefert — kein
-separater Schritt nötig). Ohne korrekten Fingerprint öffnet die App die Website in einer
-Adressleiste statt als eigenständige App (TWA-Verifizierung schlägt fehl).
+Ohne korrekten Eintrag öffnet die App die Website mit Adressleiste statt als eigenständige App
+(TWA-Verifizierung schlägt fehl), und die Play Console warnt vor nicht verifizierten Deeplinks.
 
 ## Lokaler Build
 
@@ -169,9 +168,10 @@ enthält Kontaktdaten).
 Keystore mit identischem Passwort für beide Werte erzeugen (siehe oben).
 
 **App öffnet mit sichtbarer Browser-Adressleiste statt als "echte" App**
-→ Digital Asset Links nicht verifiziert. Prüfen: Fingerprint in `assetlinks.json` korrekt? Datei
-unter `/.well-known/assetlinks.json` live erreichbar? Package-Name identisch in `assetlinks.json`
-und `twa-manifest.json`?
+→ Digital Asset Links nicht verifiziert. Prüfen: Enthält
+`https://s540d.github.io/.well-known/assetlinks.json` einen Eintrag für
+`om.sven4321.calibratemytelescope`? Ist dort der Play-App-Signing-Fingerprint (nicht der
+Upload-Key) eingetragen? Package-Name identisch in `assetlinks.json` und `twa-manifest.json`?
 
 **Gradle-Daemon-Lock nach Absturz**
 → `pkill -f GradleDaemon`, dann `./gradlew --stop` und Build erneut starten.
