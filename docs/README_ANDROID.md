@@ -85,8 +85,8 @@ und enthält die Einträge aller TWA-Apps — eine Datei unter `/CalibrateMyTele
 wird ignoriert (Issue #76).
 
 Eingetragen wird der SHA-256 des **Google-Play-App-Signing-Keys**, nicht des lokalen Upload-Keys:
-Play Console → Telescope Align → *Test und Veröffentlichung → App-Integrität → Play App Signing*
-→ *App-Signaturschlüssel-Zertifikat*. Die Deeplinks-Seite der Play Console bietet außerdem ein
+Play Console → Telescope Align → _Test und Veröffentlichung → App-Integrität → Play App Signing_
+→ _App-Signaturschlüssel-Zertifikat_. Die Deeplinks-Seite der Play Console bietet außerdem ein
 fertiges `assetlinks.json`-Snippet an.
 
 Ohne korrekten Eintrag öffnet die App die Website mit Adressleiste statt als eigenständige App
