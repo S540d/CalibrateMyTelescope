@@ -44,37 +44,37 @@
 version: 2
 updates:
   # GitHub-Actions-Versionen (gilt für ALLE Repos, auch ohne package.json).
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    target-branch: "testing"
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    target-branch: 'testing'
     schedule:
-      interval: "monthly"
+      interval: 'monthly'
     open-pull-requests-limit: 5
     commit-message:
-      prefix: "ci"
+      prefix: 'ci'
     groups:
       # Kein update-types-Filter → Major landet mit im Sammel-PR.
       actions-all:
         patterns:
-          - "*"
+          - '*'
 
   # NPM/Yarn/PNPM-Abhängigkeiten (nur Node-Repos; sonst diesen Block entfernen).
-  - package-ecosystem: "npm"
-    directory: "/"
-    target-branch: "testing"
+  - package-ecosystem: 'npm'
+    directory: '/'
+    target-branch: 'testing'
     schedule:
-      interval: "monthly"
+      interval: 'monthly'
     open-pull-requests-limit: 5
     commit-message:
-      prefix: "chore"
+      prefix: 'chore'
     groups:
       # Minor/Patch gesammelt – ein PR pro Monat.
       npm-minor-patch:
-        update-types: ["minor", "patch"]
+        update-types: ['minor', 'patch']
         patterns:
-          - "*"
+          - '*'
     ignore:
       # Majors nie über Dependabot – geplant über den Major-Report (s. o.).
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
       # ── Repo-spezifisch (mit Begründung + Issue) ────────────────────────
