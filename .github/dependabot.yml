@@ -1,46 +1,80 @@
+# Dependabot – kostenlose Dependency-Updates + Security-Alerts (Issue #60).
+# Ersetzt zusammen mit codeql.yml den kostenpflichtigen Anthropic-API-Scan.
+#
+# Kopieren nach .github/dependabot.yml (NICHT nach workflows/ — liegt direkt
+# unter .github/). GitHub liest die Datei automatisch, kein Trigger nötig.
+#
+# package-ecosystem an das Repo anpassen:
+#   - Node-Repos:            "npm"  (deckt npm, yarn, pnpm ab)
+#   - reine Doc/Config-Repos: nur "github-actions" behalten, "npm"-Block löschen
+#
+# Drosselung der PR-Flut (Issue #144):
+#   - target-branch: "testing" — PRs gegen main sind wegen der Ruleset-Pflicht
+#     (PR-Review + Status-Checks) nicht direkt mergebar. MUSS in jedem Repo
+#     stehen, sonst landen die PRs auf dem Default-Branch main.
+#   - interval: "monthly" statt weekly — ein Schwung pro Monat.
+#   - npm: EINE Gruppe npm-minor-patch (Minor/Patch), sollte i. d. R. direkt
+#     mergebar sein. **Majors kommen NICHT über Dependabot** (ignore unten).
+#     Geschichte: erst ein Block inkl. Major (#144), dann zwei Gruppen
+#     minor-patch + major (#187). Die Major-Gruppe war praktisch nie mergebar:
+#     Sie bündelt Breaking Changes aus unabhängigen Toolchains (Sentry, ESLint,
+#     Jest, TypeScript, Babel …); einer ist immer rot, der PR wird geschlossen
+#     und im Folgemonat neu erzeugt (z. B. DrawFromMemory#400).
+#     Majors brauchen eine geplante Migration → monatlicher Major-Report
+#     (project-templates/.github/workflows/monthly-major-report.yml) listet
+#     verfügbare Majors in EINEM Sammel-Issue; daraus entstehen gezielte
+#     Upgrade-Issues je Repo.
+#   - github-actions: weiter EIN Block inkl. Major (Action-Majors sind selten
+#     breaking und kommen nicht gekoppelt).
+#   - open-pull-requests-limit: 5 als Sicherheitsnetz gegen Ausreißer.
+#
+# Security-Updates sind vom ignore NICHT betroffen (siehe dependabot.expo.yml),
+#   landen aber gegen main → per Mini-PR nach testing ersetzen (#185).
+#
+# Expo-/React-Native-Projekte: NICHT diese Datei, sondern dependabot.expo.yml
+#   nehmen (zusätzlich ignore für SDK-gebundene Pakete).
+#
+# Sammel-PRs vor dem Merge IMMER lokal prüfen: `npm ci && npm test`.
+#
+# ACHTUNG: target-branch wirkt nur auf NEUE PRs; bereits offene PRs gegen main
+# bleiben stehen und müssen manuell geschlossen oder gemerged werden.
+# ACHTUNG: GitHubs Default-Security-Updates ignorieren target-branch. Deshalb
+# muss diese Datei auch in Repos liegen, die sonst keine Config bräuchten.
+
 version: 2
 updates:
   # GitHub-Actions-Versionen (gilt für ALLE Repos, auch ohne package.json).
-  - package-ecosystem: 'github-actions'
-    directory: '/'
-    target-branch: 'testing'
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    target-branch: "testing"
     schedule:
-      interval: 'monthly'
+      interval: "monthly"
     open-pull-requests-limit: 5
     commit-message:
-      prefix: 'ci'
-    # Alle Action-Bumps in EINEN PR bündeln (#48): vorher ergab jeder Bump
-    # einen eigenen PR und damit einen eigenen Satz Workflow-Runs.
+      prefix: "ci"
     groups:
-      github-actions:
+      # Kein update-types-Filter → Major landet mit im Sammel-PR.
+      actions-all:
         patterns:
-          - '*'
+          - "*"
 
-  # NPM-Abhängigkeiten.
-  - package-ecosystem: 'npm'
-    directory: '/'
-    target-branch: 'testing'
-    # Monatlich statt wöchentlich (#48) — bei einem Nebenprojekt reicht das
-    # und viertelt die Zahl der Dependabot-Läufe.
+  # NPM/Yarn/PNPM-Abhängigkeiten (nur Node-Repos; sonst diesen Block entfernen).
+  - package-ecosystem: "npm"
+    directory: "/"
+    target-branch: "testing"
     schedule:
-      interval: 'monthly'
+      interval: "monthly"
     open-pull-requests-limit: 5
     commit-message:
-      prefix: 'chore'
-    # TypeScript 7 bricht `npm ci` (typescript-eslint unterstützt es nicht, #59).
-    ignore:
-      - dependency-name: 'typescript'
-        update-types: ['version-update:semver-major']
+      prefix: "chore"
     groups:
-      # Patch-/Minor-Updates gebündelt, damit nicht pro Paket ein PR aufgeht.
-      minor-and-patch:
-        update-types:
-          - 'minor'
-          - 'patch'
-      # Major-Updates ebenfalls gebündelt (#48): vorher öffnete jedes Major
-      # einen eigenen PR (vite, jsdom, @types/node, @vitest/coverage-v8 → 4 PRs
-      # à 7 Workflows). Ein gemeinsamer PR macht daraus einen bewussten,
-      # zusammenhängend zu prüfenden Breaking-Change-PR.
-      major:
-        update-types:
-          - 'major'
+      # Minor/Patch gesammelt – ein PR pro Monat.
+      npm-minor-patch:
+        update-types: ["minor", "patch"]
+        patterns:
+          - "*"
+    ignore:
+      # Majors nie über Dependabot – geplant über den Major-Report (s. o.).
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+      # ── Repo-spezifisch (mit Begründung + Issue) ────────────────────────
